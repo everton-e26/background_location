@@ -104,11 +104,9 @@ class LocationUpdatesService : Service() {
 
         broadcastReceiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
-
                 if (intent?.action == "stop_service") {
                     removeLocationUpdates()
                 }
-
             }
         }
 
