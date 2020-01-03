@@ -64,9 +64,9 @@ class LocationUpdatesService : Service() {
                     .setSmallIcon(R.drawable.navigation_empty_icon)
                     .setWhen(System.currentTimeMillis())
 
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                builder.setChannelId(CHANNEL_ID)
-//            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                builder.setChannelId(CHANNEL_ID)
+            }
 
             return builder.build()
         }
@@ -99,7 +99,7 @@ class LocationUpdatesService : Service() {
             mNotificationManager!!.createNotificationChannel(mChannel)
         }
 
-        //startForeground(NOTIFICATION_ID, notification)
+        startForeground(NOTIFICATION_ID, notification)
 
 
         broadcastReceiver = object : BroadcastReceiver() {
@@ -135,7 +135,7 @@ class LocationUpdatesService : Service() {
             Utils.setRequestingLocationUpdates(this, false)
             mNotificationManager!!.cancel(NOTIFICATION_ID)
             stopSelf()
-            //stopForeground(true)
+            stopForeground(true)
         } catch (unlikely: SecurityException) {
             Utils.setRequestingLocationUpdates(this, true)
         }
